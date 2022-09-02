@@ -1,0 +1,543 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap");
+main {
+    font-family: "Rubik", sans-serif;
+}
+
+.settings {
+    position: absolute;
+    font-size: 1vw;
+    width: 1em;
+    height: 1em;
+    top: .5em;
+    left: .5em;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 1em 0 0 0;
+    padding: 1.25em;
+    z-index: 999;
+}
+
+.settings .action {
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    top: .5em;
+    left: .5em;
+}
+
+.settings.b-align {
+    top: unset;
+    bottom: .5em;
+}
+
+.settings .action:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: calc(50% - 1px);
+    background: black;
+}
+
+.settings .action:after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    left: calc(50% - 1px);
+    background: black;
+}
+
+.settings.show {
+    width: fit-content;
+    max-width: calc(100vw - 1em);
+    height: auto;
+    background-image: none;
+    overflow: visible;
+    border: .1em solid #eee;
+    background: white;
+}
+
+.settings.show .action {
+    top: .5em;
+    left: .5em;
+}
+
+.settings.show .action:after {
+    display: none;
+}
+
+.settings .tool {
+    margin-top: 1.5em;
+    display: flex;
+    flex-direction: column;
+    transform: scale(.99999);
+}
+
+.settings .tool button {
+    margin-top: .5em;
+}
+
+.settings .tool:first-child {
+    margin-top: 0;
+}
+
+.settings .tool h3 {
+    margin-bottom: .5em;
+}
+
+.settings input[type=range] {
+    width: 15em;
+    height: .25em;
+    background: #eee;
+    border-radius: .25em;
+    margin-right: .5em;
+}
+
+.settings input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background: #87ceeb;
+    cursor: pointer;
+}
+
+.settings output {
+    width: 2em;
+    display: inline-block;
+}
+
+.settings input[type=radio], .settings input[type=checkbox] {
+    display: none;
+}
+
+.settings input+label {
+    position: relative;
+    display: block;
+    width: max-content;
+    padding: .5em .5em .5em 2em;
+    box-sizing: border-box;
+    transform: scale(.99999);
+    cursor: pointer;
+}
+
+.settings input+label:before {
+    content: "";
+    position: absolute;
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: 50%;
+    border: .2rem solid #eee;
+    box-sizing: border-box;
+    left: 0;
+    bottom: .4em;
+    transform: scale(.99999);
+    transition: .3s;
+}
+
+.settings input+label:after {
+    content: "";
+    position: absolute;
+    width: .6em;
+    height: .6em;
+    border-radius: 50%;
+    background: #87ceeb;
+    left: .4em;
+    bottom: .8em;
+    /* transform: scale(.99999); */
+    opacity: 0;
+    transition: .3s;
+}
+
+.settings input[type=checkbox]+label:before, .settings input[type=checkbox]+label:after {
+    border-radius: 0%;
+}
+
+.settings input+label:focus:before, .settings input+label:hover:before, .settings input+label:active:before {
+    border-color: #87ceeb;
+}
+
+.settings input:checked+label:before {
+    border-color: #87ceeb;
+}
+
+.settings input:checked+label:after {
+    opacity: 1;
+}
+
+.settings input[type=button] {
+    width: fit-content;
+}
+
+.container-center {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.ball, smart-ball {
+    display: inline-block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: blue;
+    border-radius: 50%;
+    opacity: .5;
+}
+
+.transform {
+    transform: translate3d(var(--x, 0), var(--y, 0), var(--z, 0)) translate(var(--oX, -50%), var(--oY, -50%)) rotate3d(var(--i, 0), var(--j, 0), var(--k, 0), var(--a, 0)) var(--t, );
+}
+
+.hide {
+    display: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.start-screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.start-screen h1 {
+    font-size: 4vw;
+}
+
+.square {
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    background: blue;
+    opacity: .5;
+}
+
+.pivot:before, .pivot-c:before, .pivot-tr:before, .pivot-bl:before, .pivot-br:before {
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 30%;
+    max-height: 15vmax;
+    min-height: 10px;
+    background: red;
+    transform: translate(0, calc(-50% + 1px));
+    left: -1px;
+    top: -1px;
+    z-index: -1;
+}
+
+.pivot:after, .pivot-c:after, .pivot-tr:after, .pivot-bl:after, .pivot-br:after {
+    position: absolute;
+    content: '';
+    width: 30%;
+    max-width: 15vmax;
+    height: 2px;
+    min-width: 10px;
+    background: red;
+    transform: translate(calc(-50% + 1px), 0);
+    left: -1px;
+    top: -1px;
+    z-index: -1;
+}
+
+.pivot-c:before, .pivot-c:after {
+    left: calc(50% - 1px);
+    top: calc(50% - 1px);
+}
+
+.pivot-tr:before, .pivot-tr:after {
+    left: calc(100% - 1px);
+    top: calc(0% - 1px);
+}
+
+.pivot-bl:before, .pivot-bl:after {
+    left: calc(0% - 1px);
+    top: calc(100% - 1px);
+}
+
+.pivot-br:before, .pivot-br:after {
+    left: calc(100% - 1px);
+    top: calc(100% - 1px);
+}
+
+
+/*
+sec-list
+*/
+
+.sec-list {
+    font-size: 28px;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #eee;
+    padding: 1vw 0 3vw;
+    box-sizing: border-box;
+}
+
+.sec-list section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sec-list section h2 {
+    width: 90vw;
+    background: white;
+    border-radius: .25em;
+    padding: .5em .5em .5em 1em;
+    box-sizing: border-box;
+    margin: 1em 0;
+}
+
+.sec-list section h3 {
+    position: relative;
+    font-size: 0.6666em;
+    width: 90vw;
+    font-weight: normal;
+    padding-left: 2.5em;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin: .4em 0;
+}
+
+.sec-list section h3:before {
+    position: absolute;
+    content: '';
+    width: .4em;
+    height: .4em;
+    background: black;
+    border-radius: .2em;
+    left: 1.5em;
+}
+
+.sec-list section>div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sec-list section>div h3 {
+    align-self: center;
+}
+
+.sec-list section>div .ball {
+    position: relative;
+    width: 2.083em;
+    height: 2.083em;
+}
+
+.sec-list nav {
+    margin-top: 1em;
+}
+
+.sec-list button {
+    font-size: 1.2vmax;
+}
+
+button, input[type=button] {
+    width: 100%;
+    font-size: 1em;
+    padding: .75em 1.5em;
+    /* margin: .1em; */
+    border-radius: .2em;
+    background: #3498db;
+    color: white;
+    border-bottom: .2em solid #2980B9;
+    cursor: pointer;
+}
+
+button:active, input[type=button]:active {
+    background: #63b9f1;
+}
+
+
+/*
+Eyes
+*/
+
+.eyes {
+    background: black;
+}
+
+.eye {
+    width: 5em;
+    height: 3em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: khaki;
+}
+
+.eye:first-child {
+    margin-right: 2em;
+}
+
+.eye .pupil {
+    width: .5em;
+    height: 1em;
+    border-radius: 50%;
+    background: darkgreen;
+    opacity: .75;
+}
+
+
+/*
+Scale Menu
+*/
+
+.scale-menu {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    background: white;
+    border: 3em #eee solid;
+}
+
+.scale-menu .ball {
+    position: relative;
+    width: 1em;
+    height: 1em;
+    margin: .5em;
+    cursor: pointer;
+}
+
+
+/*
+speedometer
+*/
+
+.speedometer {
+    font-size: 1vw;
+    width: 30em;
+    width: 30em;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/*
+spaceship
+*/
+
+.spaceship {
+    font-size: 1vw;
+    width: 7.03em;
+    height: 3.30em;
+}
+
+.spaceship-controls {
+    position: absolute;
+    display: none;
+    bottom: 10vw;
+    width: 100%;
+    opacity: 0.4;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.spaceship-controls div {
+    width: 15vw;
+    height: 15vw;
+    margin: 0 4vw;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    font-size: 8vw;
+}
+
+
+/*
+roulette
+*/
+
+.roulette {
+    width: 40vw;
+    height: 42.9vw;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transform: translate3d(0, 0, 0);
+}
+
+
+/*
+3D
+*/
+
+.scene-3d {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.scene-3d * {
+    transform-style: preserve-3d;
+}
+
+.alpaca {
+    width: 10vmax;
+}
+
+@media (max-width: 1024px) {
+    .settings {
+        font-size: 3.5vw;
+    }
+    .start-screen h1 {
+        font-size: 8vw;
+    }
+    .sec-list {
+        font-size: 18px;
+        padding-bottom: 10vw;
+    }
+    .sec-list button {
+        font-size: 2vmax;
+    }
+    .scale-menu {
+        flex-direction: column;
+    }
+    .speedometer {
+        font-size: 2.5vw;
+    }
+    .spaceship {
+        font-size: 3vw;
+    }
+    .spaceship-controls {
+        display: flex;
+        justify-content: center;
+        color: white;
+    }
+    .roulette {
+        transform: scale(2.25);
+    }
+}

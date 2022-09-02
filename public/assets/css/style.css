@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap");
+body, html, div, h1, h2, ol, li {
+    padding: 0;
+    margin: 0;
+}
+
+body, html {
+    background: #eee;
+    font-family: "Rubik", sans-serif;
+    font-size: 1.5vw;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 3.5rem 0;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+ol {
+    width: 60vw;
+    font-size: 1rem;
+    margin-top: 2.5rem;
+    counter-reset: li;
+    list-style: none;
+}
+
+ol li {
+    width: 100%;
+    background: white;
+    margin-bottom: 1em;
+    border-radius: 0.25em;
+}
+
+ol li a {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    padding: 0.4em 1em;
+    padding-left: 2.75em;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease-out;
+}
+
+ol li a:before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -.5em;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    border: 0.3em solid white;
+    font-weight: bold;
+    border-radius: 2em;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-out;
+}
+
+ol li:hover a {
+    padding-left: 3.75em;
+}
+
+ol li:hover a:before {
+    background: black;
+}
+
+@media (max-width: 1024px) {
+    body, html {
+        font-size: 2.5vw;
+    }
+    ol {
+        width: 85vw;
+        font-size: 1.75rem;
+    }
+}

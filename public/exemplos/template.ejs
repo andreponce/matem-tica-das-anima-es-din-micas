@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <title>
+            <%=title%>
+        </title>
+        <link rel="shortcut icon" href="">
+        <link rel="stylesheet" type="text/css" href="../assets/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/examples.css">
+        <% if (stylePath) { %>
+            <link rel="stylesheet" type="text/css" href="<%=stylePath%>">
+            <% } %>
+    </head>
+
+    <body>
+        <main>
+            <% if (hasHTML) { %>
+                <%- include(`${className}/index.html`); %>
+                    <% } %>
+        </main>
+        <script type="module" src="./<%= `${className}/main.js` %>"></script>
+    </body>
+
+</html>

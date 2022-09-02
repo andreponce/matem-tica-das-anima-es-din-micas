@@ -1,0 +1,28 @@
+html{
+    position: unset;
+    overflow: unset;
+}
+body{
+    position: absolute;
+    overflow: auto;
+}
+
+main{
+    position: absolute;
+    height: auto;
+}
+
+.root{
+    font-size: 10rem;
+}
+
+@media (max-width: 1024px) {
+    .root{
+        font-size: 4rem;
+    }
+}
+
+.root div{
+    transform-origin: 0 50%;
+    transform: translateX(var(--x, 0)) scale(var(--s, 1));
+}

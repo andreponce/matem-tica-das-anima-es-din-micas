@@ -1,0 +1,39 @@
+<div class="container-center">
+    <div class="ball"></div>
+</div>
+<div class="settings">
+    <div class="action"></div>
+    <div class="tool">
+        <h3>Equation</h3>
+
+        <input type="radio" id="rad1" name="equation" value="0" />
+        <label for="rad1">f(x) = x</label>
+
+        <input type="radio" id="rad2" name="equation" value="1" />
+        <label for="rad2">f(x) = sen(x/20) * 100</label>
+
+        <input type="radio" id="rad3" name="equation" value="2" />
+        <label for="rad3">f(x) = (x/12)<sup>2</sup> - range</label>
+
+        <input type="radio" id="rad4" name="equation" value="3" checked />
+        <label for="rad4">f(x) = -(x/40)<sup>3</sup></label>
+    </div>
+    <div class="tool">
+        <input type="checkbox" id="ch1" name="origin" />
+        <label for="ch1">Show Origin Reference</label>
+    </div>
+    <div class="tool">
+        <h3>Speed</h3>
+        <div>
+            <input type="range" min="0" max="10" step="0.01" value="2" id="rang" name="speed">
+            <output for="rang">0</output>
+        </div>
+    </div>
+    <div class="tool">
+        <h3>Range</h3>
+        <div>
+            <input type="range" min="100" max="300" step="0.01" value="250" id="rang2" name="range">
+            <output for="rang2">0</output>
+        </div>
+    </div>
+</div>

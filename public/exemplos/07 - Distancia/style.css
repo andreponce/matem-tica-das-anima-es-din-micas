@@ -1,0 +1,20 @@
+.container-center::before{
+    content: '';
+    position: absolute;
+    width: calc(500px - 2em);
+    height: calc(500px - 2em);
+    border: 1px solid blue;
+    border-radius: 50%;
+    opacity: .25;
+}
+
+.ball:after{
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
